@@ -1,0 +1,53 @@
+{
+  "name": "fluidlint",
+  "version": "1.0.0",
+  "description": "CLI that ensures that Liquid features that aren't supported by Fluid are not used.",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel 'src/*.js' --out-dir dist --ignore 'src/*.test.js'",
+    "start": "babel 'src/*.js' --out-dir dist --ignore 'src/*.test.js' --watch",
+    "test": "jest",
+    "postinstall": "npm run build",
+    "check-lint": "prettier --list-different '**/*.js' && eslint '**/*.js'",
+    "lint": "prettier --write '**/*.js' && eslint --fix '**/*.js'",
+    "prepublishOnly": "npm ci && npm run build && npm run check-lint && npm test",
+    "postpublish": "git tag v$npm_package_version && git push --tags"
+  },
+  "files": [
+    "cli.js",
+    "dist"
+  ],
+  "eslintConfig": {
+    "extends": "@cloudfour/eslint-config"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "bin": "cli.js",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@cloudfour/eslint-config": "^1.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-unicorn": "^6.0.1",
+    "jest": "^23.6.0",
+    "prettier": "^1.14.3"
+  },
+  "dependencies": {
+    "ansi-escapes": "^3.1.0",
+    "chalk": "^2.4.1",
+    "fast-glob": "^2.2.3",
+    "log-symbols": "^2.2.0",
+    "plur": "^3.0.1",
+    "string-width": "^2.1.1"
+  }
+}
