@@ -1,0 +1,20 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - checkout
+      - run:
+          name: Install
+          commands: npm ci
+      - run:
+          name: Test
+          commands: npm test
+      - run:
+          name: Build
+          commands: npm run build
+      - run:
+          name: Lint
+          commands: npm run check-lint
