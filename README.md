@@ -25,3 +25,22 @@ In `package.json`:
 ```
 npm run fluidlint
 ```
+
+## Publishing
+
+- On a non-master branch:
+
+  ```
+  npm version [<newversion> | major | minor | patch]
+  ```
+
+  This will update the version in `package.json`.
+
+- Create the release notes in a pre-release on GitHub
+- Once that PR is merged:
+
+  ```
+  git checkout master && git pull && npm publish
+  ```
+
+  This will run linting/tests, publish to npm, and create/push the git tag
