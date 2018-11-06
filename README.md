@@ -38,7 +38,7 @@ npm run fluidlint
 
   This will update the version in `package.json`.
 
-- Create the release notes in a pre-release on GitHub
+- Create the release notes in a release draft on GitHub
 - Once that PR is merged:
 
   ```
