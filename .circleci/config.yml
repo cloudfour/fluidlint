@@ -8,13 +8,13 @@ jobs:
       - checkout
       - run:
           name: Install
-          commands: npm ci
+          command: npm ci
       - run:
           name: Test
-          commands: npm test
+          command: npm test
       - run:
           name: Build
-          commands: npm run build
+          command: npm run build
       - run:
           name: Lint
-          commands: npm run check-lint
+          command: npm run check-lint
