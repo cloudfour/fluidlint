@@ -4,7 +4,7 @@
 // the source line that failed the rules because we don't keep track of line/col numbers
 
 const path = require('path');
-const chalk = require('chalk');
+const c = require('ansi-colors');
 const logSymbols = require('log-symbols');
 const plur = require('plur');
 const stringWidth = require('string-width');
@@ -62,7 +62,7 @@ module.exports = results => {
 
         // Stylize inline code blocks
         message = message.replace(/\B`(.*?)`\B|\B'(.*?)'\B/g, (m, p1, p2) =>
-          chalk.bold(p1 || p2)
+          c.bold(p1 || p2)
         );
 
         const line = String(x.line || 0);
@@ -108,10 +108,10 @@ module.exports = results => {
           // Add the line number so it's Cmd+click'able in some terminals
           // Use dim & gray for terminals like iTerm that doesn't support `hidden`
           const position = showLineNumbers
-            ? chalk.hidden.dim.gray(`:${x.firstLineCol}`)
+            ? c.hidden.dim.gray(`:${x.firstLineCol}`)
             : '';
 
-          return '  ' + chalk.underline(x.relativeFilePath) + position;
+          return '  ' + c.underline(x.relativeFilePath) + position;
         }
 
         if (x.type === 'message') {
@@ -119,10 +119,9 @@ module.exports = results => {
             '',
             x.severity === 'warning' ? logSymbols.warning : logSymbols.error,
             ' '.repeat(maxLineWidth - x.lineWidth) +
-              chalk.dim(x.line + chalk.gray(':') + x.column),
+              c.dim(x.line + c.gray(':') + x.column),
             ' '.repeat(maxColumnWidth - x.columnWidth) + x.message,
-            ' '.repeat(maxMessageWidth - x.messageWidth) +
-              chalk.gray.dim(x.ruleId)
+            ' '.repeat(maxMessageWidth - x.messageWidth) + c.gray.dim(x.ruleId)
           ];
 
           if (!showLineNumbers) {
@@ -130,7 +129,7 @@ module.exports = results => {
           }
 
           const formattedSource = `
-     ${chalk.gray(x.source)}`;
+     ${c.gray(x.source)}`;
 
           return line.join('  ') + (x.source ? formattedSource : '');
         }
@@ -142,13 +141,12 @@ module.exports = results => {
   if (warningCount > 0) {
     output +=
       '  ' +
-      chalk.yellow(`${warningCount} ${plur('warning', warningCount)}`) +
+      c.yellow(`${warningCount} ${plur('warning', warningCount)}`) +
       '\n';
   }
 
   if (errorCount > 0) {
-    output +=
-      '  ' + chalk.red(`${errorCount} ${plur('error', errorCount)}`) + '\n';
+    output += '  ' + c.red(`${errorCount} ${plur('error', errorCount)}`) + '\n';
   }
 
   return errorCount + warningCount > 0 ? output : '';

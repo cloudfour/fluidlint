@@ -31,6 +31,7 @@
     "@babel/core": "^7.1.2",
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@cloudfour/eslint-config": "^1.0.0",
+    "ansi-colors": "^3.2.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
@@ -44,7 +45,6 @@
   },
   "dependencies": {
     "ansi-escapes": "^3.1.0",
-    "chalk": "^2.4.1",
     "fast-glob": "^2.2.3",
     "log-symbols": "^2.2.0",
     "plur": "^3.0.1",
