@@ -12,7 +12,7 @@
     "postinstall": "npm run build",
     "check-lint": "prettier --list-different '**/*.js' && eslint '**/*.js'",
     "lint": "prettier --write '**/*.js' && eslint --fix '**/*.js'",
-    "prepublishOnly": "npm ci && npm run build && npm run check-lint && npm test",
+    "prepublishOnly": "npm ci && npm run check-lint && npm test",
     "postpublish": "git tag v$npm_package_version && git push --tags"
   },
   "files": [
