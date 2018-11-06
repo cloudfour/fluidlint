@@ -1,6 +1,6 @@
 {
   "name": "fluidlint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI that ensures that Liquid features that aren't supported by Fluid are not used.",
   "keywords": [],
   "author": "",
@@ -9,10 +9,9 @@
     "build": "babel 'src/*.js' --out-dir dist --ignore 'src/*.test.js'",
     "start": "babel 'src/*.js' --out-dir dist --ignore 'src/*.test.js' --watch",
     "test": "jest",
-    "postinstall": "npm run build",
     "check-lint": "prettier --list-different '**/*.js' && eslint '**/*.js'",
     "lint": "prettier --write '**/*.js' && eslint --fix '**/*.js'",
-    "prepublishOnly": "npm ci && npm run check-lint && npm test",
+    "prepublishOnly": "npm ci && npm run build && npm run check-lint && npm test",
     "postpublish": "git tag v$npm_package_version && git push --tags"
   },
   "files": [
