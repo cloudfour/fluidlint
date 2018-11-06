@@ -37,7 +37,11 @@ const rules = [
 ];
 
 const main = async () => {
-  const files = await glob(['**/*.liquid', '!node_modules']);
+  const args = process.argv.slice(2);
+  const userGlobs = args.filter(arg => !arg.startsWith('-'));
+  const files = await glob(userGlobs.length > 0 ? userGlobs : ['**/*.liquid'], {
+    ignore: ['node_modules/**/*']
+  });
   const results = await Promise.all(
     files.map(async path => {
       const source = await readFileAsync(path, 'utf8');

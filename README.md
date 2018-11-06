@@ -5,8 +5,10 @@ CLI that ensures that [Liquid](https://shopify.github.io/liquid/) features that 
 ## Single-Use
 
 ```
-npx fluidlint
+npx fluidlint 'some-folder/**.liquid'
 ```
+
+If you do not specify file(s), it defaults to `**/*.liquid`
 
 ## Setting Up In Project
 
