@@ -1,6 +1,6 @@
 {
   "name": "fluidlint",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI that ensures that Liquid features that aren't supported by Fluid are not used.",
   "keywords": [],
   "author": "",
@@ -30,7 +30,6 @@
     "@babel/core": "^7.1.2",
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@cloudfour/eslint-config": "^1.0.0",
-    "ansi-colors": "^3.2.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
@@ -43,6 +42,7 @@
     "prettier": "^1.14.3"
   },
   "dependencies": {
+    "ansi-colors": "^3.2.1",
     "ansi-escapes": "^3.1.0",
     "fast-glob": "^2.2.3",
     "log-symbols": "^2.2.0",
