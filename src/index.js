@@ -33,6 +33,17 @@ const rules = [
         severity: 'error'
       };
     }
+  },
+  tag => {
+    const params = tag.tagValue.split(/[\s,]+/).filter(p => p !== '');
+    if (params.some(p => p.endsWith(':') && p.includes('-'))) {
+      return {
+        ruleId: 'no-property-dash',
+        message: 'Properties should not have dashes',
+        source: tag.source,
+        severity: 'error'
+      };
+    }
   }
 ];
 
